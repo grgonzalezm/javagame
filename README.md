@@ -1,4 +1,4 @@
-# Project Title
+# Java Game
 
 Rock, Paper, Scissors game
 
@@ -14,7 +14,7 @@ Run 'http://localhost:8080/webgame/faces/main.xhtml' on your browser and play!
 
 ## Authors
 
-Gonzalo Rafael Gonz·lez Maldonado
+Gonzalo Rafael Gonz√°lez Maldonado
 February 2018
 
 ## License
