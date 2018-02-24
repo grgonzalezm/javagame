@@ -6,7 +6,6 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 id="WebApp_ID" version="3.0">
   <display-name>webgame</display-name>
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
     <welcome-file>main.xhtml</welcome-file>
   </welcome-file-list>
   <servlet>
@@ -27,23 +26,11 @@ id="WebApp_ID" version="3.0">
     <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
     <param-value>resources.application</param-value>
   </context-param>
-  <context-param>
-    <param-name>javax.faces.PROJECT_STAGE</param-name>
-    <param-value>Development</param-value>
-  </context-param>
-  <context-param>
-    <param-name>BootsFaces_USETHEME</param-name>
-    <param-value>true</param-value>
-  </context-param>
-  <context-param>
-    <param-name>BootsFaces_THEME</param-name>
-    <param-value>default</param-value>
-  </context-param>
   <listener>
     <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
   </listener>
   <error-page>
     <exception-type>javax.faces.application.ViewExpiredException</exception-type>
     <location>/exception/sessionexpired.xhtml</location>
-</error-page>
+	</error-page>
 </web-app>
