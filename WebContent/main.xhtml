@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  		xmlns:h="http://java.sun.com/jsf/html"
+  		xmlns:ui="http://java.sun.com/jsf/facelets"
+  		xmlns:b="http://bootsfaces.net/ui"
+  		xmlns:f="http://java.sun.com/jsf/core"
+  		xmlns:c="http://java.sun.com/jstl/core">
+	<h:head>
+		<style>
+		.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus
+			{
+			background-color: #ddd !important;
+			}
+		</style>
+	</h:head>
+	<h:body>
+		<script>
+			var audioElement = document.createElement('audio');
+	    	audioElement.setAttribute('src', 'audio/audioAlexKidd.mp3');
+	    	audioElement.addEventListener('ended', function() {
+	    	    this.currentTime = 0;
+	    	    this.play();
+	    	}, false);
+			audioElement.play();
+		</script>
+		<b:container id="menu">
+		    <h:form>
+		      <b:navBar inverse="true"
+		        brandHref="#" fixed="top">
+		        <b:navbarLinks>
+		          <b:navCommandLink value="Play Round" iconAwesome="fa-gamepad"
+		            actionListener="#{play.newGame()}" ajax="true"
+		            update=":content"/>
+		          <b:navCommandLink value="Restart Game" iconAwesome="retweet"
+		          	actionListener="#{play.restart()}" ajax="true"
+		          	update=":content" />
+		          <b:navCommandLink value="Show Historial" iconAwesome="fa-clock-o"
+		          	action="historial.xhtml"/>
+		          <b:navLink value="About" href="#"
+		        	onclick="$('.modalPseudoClass').modal();return false;"/>
+		        </b:navbarLinks>
+		      </b:navBar>
+			</h:form>
+		</b:container><br/><br/><br/><br/>
+		<b:container id="content">
+    		<h:form id="form" style="margin-bottom:-10px">
+      			<b:row>
+        			<b:column span="8">
+          				<b:panel look="primary" contentStyle="height:580px">
+          					<div style="position: relative;">
+          						<img src="images/alexKidd.png" style="width:720px;height: 550px;position:absolute"/>
+          						<h:graphicImage value="#{play.getImageByPlayer(0)}" style="width:80px;height: 80px;position:absolute;left: 100px;top: 170px" cache="false"/>
+          						<h:graphicImage value="#{play.getImageByPlayer(1)}" style="width:80px;height: 80px;position:absolute;left: 500px;top: 170px" cache="false"/>
+          					</div>
+          				</b:panel>
+        			</b:column>
+        			<b:column span="4">
+        				<center>
+        					<h2><h:outputText value="ROUND #{play.numberOfGames()}"/></h2>
+        				</center>
+        				<br/>
+          				<b:panel title="Results" contentStyle="height:220px" look="primary">
+            				<b:panelGrid id="resultGrid" columns="3" border="1" style="width:300px;height:200px;overflow-y: auto;overflow-x:hidden">
+            					<h:outputText value="Player 1"/>
+            					<h:outputText value="Player 2"/>
+            					<h:outputText value="Winner"/>
+              					<c:forEach items="#{play.games}" var="game">
+                					<h:outputText value="#{game.getPlayer1()}" />
+                					<h:outputText value="#{game.getPlayer2()}" />
+                					<h:outputText value="#{game.getWinner()}" />
+              					</c:forEach>
+            				</b:panelGrid>
+          				</b:panel>
+        			</b:column>
+      			</b:row>
+    		</h:form>
+  		</b:container>
+  		<b:modal title="About me" styleClass="modalPseudoClass">
+	      	<p>Created by Gonzalo Rafael González Maldonado. </p>
+	      	<p>Contact me : </p>
+	      	<p><a href="https://www.linkedin.com/in/gonzalorafaelgonzalezmaldonado/" target="_blank">Linkedin</a> or 
+	      	<a href="mailto:gonzalorafaelgonzalezmaldonado@gmail.com">Email</a></p>
+			<p>February 2018</p>
+			<f:facet name="footer">
+	      		<b:button value="close" dismiss="modal" onclick="return false;" />
+	    	</f:facet>
+	  	</b:modal>
+	</h:body>
+</html>

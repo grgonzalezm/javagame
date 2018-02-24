@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  		xmlns:h="http://java.sun.com/jsf/html"
+  		xmlns:ui="http://java.sun.com/jsf/facelets"
+  		xmlns:b="http://bootsfaces.net/ui"
+  		xmlns:f="http://java.sun.com/jsf/core"
+  		xmlns:c="http://java.sun.com/jstl/core">
+	<h:head>
+		<style>
+		.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus
+			{
+			background-color: #ddd !important;
+			}
+		</style>
+	</h:head>
+	<h:body>
+		<b:container id="menu">
+		    <h:form>
+		      <b:navBar inverse="true"
+		        brandHref="#" fixed="top">
+		        <b:navbarLinks>
+		          <b:navCommandLink value="Back to Game" iconAwesome="backward" action="main.xhtml"/>
+		          <b:navLink value="About" href="#"
+		        	onclick="$('.modalPseudoClass').modal();return false;"/>
+		        </b:navbarLinks>
+		      </b:navBar>
+			</h:form>
+		</b:container><br/>
+		<b:container>
+			<br/><br/>
+    		<h:form id="form">
+      			<b:row>
+        			<b:column span="8">
+          				<b:panel title="Historial" contentStyle="height:400px" look="primary">
+            				<b:panelGrid id="resultGrid" columns="4" border="1" style="width:800px;height:200px;overflow-y: auto;overflow-x:hidden">
+            					<h:outputText value="Total Rounds"/>
+            					<h:outputText value="Wins Player1"/>
+            					<h:outputText value="Wins Player 2"/>
+            					<h:outputText value="Draws"/>
+                				<h:outputText value="#{historial.getNumberOfGames()}" />
+                				<h:outputText value="#{historial.getNumberOfWinsPlayer1()}" />
+                				<h:outputText value="#{historial.getNumberOfWinsPlayer2()}" />
+                				<h:outputText value="#{historial.getNumberOfDraws()}" />
+            				</b:panelGrid>
+          				</b:panel>
+        			</b:column>
+      			</b:row>
+    		</h:form>
+  		</b:container>
+  		<b:modal title="About me" styleClass="modalPseudoClass">
+	      	<p>Created by Gonzalo Rafael González Maldonado. </p>
+	      	<p>Contact me : </p>
+	      	<p><a href="https://www.linkedin.com/in/gonzalorafaelgonzalezmaldonado/" target="_blank">Linkedin</a> or 
+	      	<a href="mailto:gonzalorafaelgonzalezmaldonado@gmail.com">Email</a></p>
+			<p>February 2018</p>
+			<f:facet name="footer">
+	      		<b:button value="close" dismiss="modal" onclick="return false;" />
+	    	</f:facet>
+	  	</b:modal>
+	</h:body>
+</html>
